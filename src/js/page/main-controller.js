@@ -236,54 +236,7 @@ export default class MainController {
   }
 
   async _compressSvg(settings, iterationCallback = function(){}) {
-    const thisJobId = this._latestCompressJobId = Math.random();
-
     await svgo.abortCurrent();
-
-    if (thisJobId != this._latestCompressJobId) {
-      // while we've been waiting, there's been a newer call
-      // to _compressSvg, we don't need to do anything
-      return;
-    }
-
-    if (settings.original) {
-      this._updateForFile(this._inputItem, {
-        compress: settings.gzip
-      });
-      return;
-    }
-
-    const cacheMatch = this._cache.match(settings.fingerprint);
-
-    if (cacheMatch) {
-      this._updateForFile(cacheMatch, {
-        compareToFile: this._inputItem,
-        compress: settings.gzip
-      });
-      return;
-    }
-
-    this._downloadButtonUi.working();
-
-    try {
-      const finalResultFile = await svgo.process(settings, resultFile => {
-        iterationCallback(resultFile);
-        this._updateForFile(resultFile, {
-          compareToFile: this._inputItem,
-          compress: settings.gzip
-        });
-      });
-
-      this._cache.add(settings.fingerprint, finalResultFile);
-    }
-    catch(e) {
-      if (e.message == "abort") return;
-      e.message = "Minifying error: " + e.message;
-      this._handleError(e);
-    }
-    finally {
-      this._downloadButtonUi.done();
-    }
   }
 
   async _updateForFile(svgFile, { compareToFile, compress }) {

@@ -1,6 +1,5 @@
 import { strToEl, transitionToClass, transitionFromClass } from '../utils';
 import SvgOutput from './svg-output';
-import CodeOutput from './code-output';
 
 export default class Output {
   constructor() {
@@ -9,8 +8,7 @@ export default class Output {
     '');
 
     this._types = {
-      image: new SvgOutput(),
-      code: new CodeOutput()
+      image: new SvgOutput()
     };
 
     this._svgFile = null;
