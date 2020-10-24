@@ -108,16 +108,6 @@ export default class MainController {
           duration: 3000
         });
       }
-
-      // for testing
-      if (false) {
-        (async () => {
-          this._onInputChange({
-            data: await fetch('test-svgs/car-lite.svg').then(r => r.text()),
-            filename: 'car-lite.svg'
-          });
-        })();
-      }
     });
   }
 

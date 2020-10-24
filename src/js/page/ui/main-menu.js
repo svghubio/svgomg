@@ -18,7 +18,6 @@ export default class MainMenu extends EventEmitter {
       this.container = document.querySelector('.main-menu');
       this._loadFileInput = document.querySelector('.load-file-input');
       this._pasteInput = document.querySelector('.paste-input');
-      this._loadDemoBtn = document.querySelector('.load-demo');
       this._loadFileBtn = document.querySelector('.load-file');
       this._pasteLabel = document.querySelector('.menu-input');
       this._overlay = this.container.querySelector('.overlay');
@@ -30,7 +29,6 @@ export default class MainMenu extends EventEmitter {
       this._overlay.addEventListener('click', e => this._onOverlayClick(e));
 
       this._loadFileBtn.addEventListener('click', e => this._onLoadFileClick(e));
-      this._loadDemoBtn.addEventListener('click', e => this._onLoadDemoClick(e));
       this._loadFileInput.addEventListener('change', e => this._onFileInputChange(e));
       this._pasteInput.addEventListener('input', e => this._onTextInputChange(e));
     });
@@ -103,37 +101,5 @@ export default class MainMenu extends EventEmitter {
       data: await readFileAsText(file),
       filename: file.name
     });
-  }
-
-  async _onLoadDemoClick(event) {
-    event.preventDefault();
-    event.target.blur();
-    this._loadDemoBtn.appendChild(this._spinner.container);
-    this._spinner.show();
-
-    try {
-      this.emit('svgDataLoad', {
-        data: await fetch('test-svgs/car-lite.svg').then(r => r.text()),
-        filename: 'car-lite.svg'
-      });
-    }
-    catch (err) {
-      // This extra scope is working around a babel-minify bug.
-      // It's fixed in Babel 7.
-      {
-        this.stopSpinner();
-
-        let error;
-
-        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-          error = Error("Demo not available offline");
-        }
-        else {
-          error = Error("Couldn't fetch demo SVG");
-        }
-
-        this.emit('error', { error });
-      }
-    }
   }
 }
