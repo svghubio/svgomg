@@ -2,7 +2,7 @@
 import Svgo from './svgo';
 import { domReady } from './utils';
 import Output from './ui/output';
-import DownloadButton from './ui/download-button';
+//import DownloadButton from './ui/download-button';
 import CopyButton from './ui/copy-button';
 import { copySupported } from './ui/copy-button';
 import BgFillButton from './ui/bg-fill-button';
@@ -27,7 +27,7 @@ export default class MainController {
     // ui components
     this._mainUi = null;
     this._outputUi = new Output();
-    this._downloadButtonUi = new DownloadButton();
+    //this._downloadButtonUi = new DownloadButton();
     this._copyButtonUi = new CopyButton();
     this._bgFillUi = new BgFillButton();
     this._resultsUi = new Results();
@@ -92,7 +92,7 @@ export default class MainController {
         minorActionContainer.appendChild(this._copyButtonUi.container);
       }
 
-      actionContainer.appendChild(this._downloadButtonUi.container);
+      //actionContainer.appendChild(this._downloadButtonUi.container);
 
       document.querySelector('.output').appendChild(this._outputUi.container);
       this._container.appendChild(this._toastsUi.container);
@@ -247,7 +247,7 @@ export default class MainController {
 
   async _updateForFile(svgFile, { compareToFile, compress }) {
     this._outputUi.update(svgFile);
-    this._downloadButtonUi.setDownload(this._inputFilename, svgFile);
+    //this._downloadButtonUi.setDownload(this._inputFilename, svgFile);
     this._copyButtonUi.setCopyText(svgFile.text);
 
     this._resultsUi.update({

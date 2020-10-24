@@ -40,7 +40,7 @@ addEventListener('activate', event => {
       if (!expectedCaches.includes(cacheName)) await caches.delete(cacheName);
     }
 
-    await storage.set('active-version', version);
+    //await storage.set('active-version', version);
   })());
 });
 
