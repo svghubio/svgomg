@@ -219,7 +219,8 @@ function getDimensions(parsedSvg) {
 function* multipassCompress(settings) {
   // activate/deactivate plugins
   Object.keys(settings.plugins).forEach(pluginName => {
-    pluginsData[pluginName].active = settings.plugins[pluginName];
+    //pluginsData[pluginName].active = settings.plugins[pluginName];
+    pluginsData[pluginName].active = false;
   });
 
   // Set floatPrecision across all the plugins
