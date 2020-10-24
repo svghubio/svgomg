@@ -17,9 +17,7 @@ export default class MainMenu extends EventEmitter {
     domReady.then(() => {
       this.container = document.querySelector('.main-menu');
       this._loadFileInput = document.querySelector('.load-file-input');
-      this._pasteInput = document.querySelector('.paste-input');
       this._loadFileBtn = document.querySelector('.load-file');
-      this._pasteLabel = document.querySelector('.menu-input');
       this._overlay = this.container.querySelector('.overlay');
       this._menu = this.container.querySelector('.menu');
 
@@ -30,7 +28,6 @@ export default class MainMenu extends EventEmitter {
 
       this._loadFileBtn.addEventListener('click', e => this._onLoadFileClick(e));
       this._loadFileInput.addEventListener('change', e => this._onFileInputChange(e));
-      this._pasteInput.addEventListener('input', e => this._onTextInputChange(e));
     });
   }
 
@@ -64,23 +61,6 @@ export default class MainMenu extends EventEmitter {
   _onMenuButtonClick(event) {
     event.preventDefault();
     this.show();
-  }
-
-  _onTextInputChange(event) {
-    const val = this._pasteInput.value.trim();
-
-    if (val.includes('</svg>')) {
-      this._pasteInput.value = '';
-      this._pasteInput.blur();
-
-      this._pasteLabel.appendChild(this._spinner.container);
-      this._spinner.show();
-
-      this.emit('svgDataLoad', {
-        data: val,
-        filename: 'image.svg'
-      });
-    }
   }
 
   _onLoadFileClick(event) {
