@@ -53,7 +53,7 @@ export default class Settings extends EventEmitter {
     // Firefox uses DELTA_LINE on a mouse wheel, ignore it
     if (!event.deltaMode) { // 0 is "pixels"
       event.preventDefault();
-      event.currentTarget.scrollTop += event.deltaY;
+      event.currentTarget.scrollTop -= event.deltaY;
     }
   }
 

@@ -69,7 +69,7 @@ export default class PanZoom {
     event.preventDefault();
 
     const boundingRect = this._target.getBoundingClientRect();
-    let delta = event.deltaY;
+    let delta = -event.deltaY;
 
     if (event.deltaMode === 1) { // 1 is "lines", 0 is "pixels"
       // Firefox uses "lines" when mouse is connected
