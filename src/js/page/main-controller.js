@@ -237,6 +237,10 @@ export default class MainController {
 
   async _compressSvg(settings, iterationCallback = function(){}) {
     await svgo.abortCurrent();
+
+    this._updateForFile(this._inputItem, {
+      compress: false
+    });
   }
 
   async _updateForFile(svgFile, { compareToFile, compress }) {
