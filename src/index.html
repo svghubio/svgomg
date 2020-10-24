@@ -5,21 +5,9 @@
     <meta name="theme-color" content="#303F9F">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0">
     <link rel="preload" as="script" href="js/page.js">
-    <link rel="preload" as="script" href="https://www.google-analytics.com/analytics.js">
     <link rel="preload" as="style" href="css/all.css">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata">
+    <!--<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata">-->
     <style>{{headCSS|safe}}</style>
-    <script>
-      if ((!location.port || location.port == "80") && location.protocol != 'https:') {
-        location.protocol = 'https:';
-      }
-
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-58850134-1', 'auto');
-      ga('send', 'pageview');
-
-      window.version = "{{changelog[0].version}}";
-    </script>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon-precomposed" href="imgs/icon.png">
     <link rel="icon" href="imgs/icon.png">
