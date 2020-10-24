@@ -10,7 +10,7 @@ export default class ViewToggler extends EventEmitter {
       this.container = document.querySelector('.view-toggler');
 
       // stop browsers remembering previous form state
-      this.container.output[0].checked = true;
+      //this.container.output[0].checked = true;
 
       this.container.addEventListener('change', e => this._onChange(e));
     });
