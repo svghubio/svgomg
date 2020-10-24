@@ -51,6 +51,7 @@
 
     & .minor-floating-action-button {
       margin-right: 10px;
+      @include transform(translate(5px, 10px));
     }
   }
 
@@ -58,9 +59,9 @@
     right: 30px;
     bottom: 30px;
 
-    & .results-container {
-      margin-right: -17px;
-    }
+    //& .results-container {
+    //  margin-right: -17px;
+    //}
 
     & .minor-action-container {
       flex-flow: column;
@@ -75,10 +76,10 @@
     }
   }
 
-  @media (min-width: 900px) {
-    right: 0;
-    bottom: 30px;
-  }
+  //@media (min-width: 900px) {
+  //  right: 0;
+  //  bottom: 30px;
+  //}
 
 }
 
@@ -153,6 +154,9 @@
     &.active {
       // translateZ required to make Safari layer in the right order
       @include transform(translateZ(0));
+      @media (max-width: 639px) {
+        @include transform(translateY(-55px));
+      }
     }
   }
 
