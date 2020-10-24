@@ -1,4 +1,4 @@
-import { idbKeyval as storage } from '../utils/storage';
+//import { idbKeyval as storage } from '../utils/storage';
 import Svgo from './svgo';
 import { domReady } from './utils';
 import Output from './ui/output';
@@ -65,12 +65,12 @@ export default class MainController {
     }
 
     // tell the user about the latest update
-    storage.get('last-seen-version').then(lastSeenVersion => {
-      if (lastSeenVersion) {
-        this._changelogUi.showLogFrom(lastSeenVersion);
-      }
-      storage.set('last-seen-version', self.version);
-    });
+    //storage.get('last-seen-version').then(lastSeenVersion => {
+    //  if (lastSeenVersion) {
+    //    this._changelogUi.showLogFrom(lastSeenVersion);
+    //  }
+    //  storage.set('last-seen-version', self.version);
+    //});
 
     domReady.then(() => {
       this._container = document.querySelector('.app-output');
@@ -224,15 +224,17 @@ export default class MainController {
   }
 
   async _loadSettings() {
-    const settings = await storage.get('settings');
-    if (settings) this._settingsUi.setSettings(settings);
+    //const settings = await storage.get('settings');
+    //if (settings) this._settingsUi.setSettings(settings);
+    return;
   }
 
   _saveSettings(settings) {
-    const copy = Object.assign({}, settings);
-    // doesn't make sense to retain the "show original" option
-    delete copy.original;
-    storage.set('settings', copy);
+    //const copy = Object.assign({}, settings);
+    //// doesn't make sense to retain the "show original" option
+    //delete copy.original;
+    //storage.set('settings', copy);
+    return;
   }
 
   async _compressSvg(settings, iterationCallback = function(){}) {

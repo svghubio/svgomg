@@ -1,4 +1,4 @@
-import {idbKeyval as storage} from '../utils/storage.js';
+//import {idbKeyval as storage} from '../utils/storage.js';
 
 const version = SVGOMG_VERSION;
 const cachePrefix = 'svgomg-';
@@ -8,7 +8,7 @@ const expectedCaches = [staticCacheName, fontCacheName];
 
 addEventListener('install', event => {
   event.waitUntil((async () => {
-    const activeVersionPromise = storage.get('active-version');
+    //const activeVersionPromise = storage.get('active-version');
     const cache = await caches.open(staticCacheName);
 
     await cache.addAll([
@@ -19,16 +19,16 @@ addEventListener('install', event => {
       'js/page.js',
       'js/prism-worker.js',
       'js/svgo-worker.js',
-      'changelog.json',
-      'https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata'
+      'changelog.json'//,
+      //'https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata'
     ]);
 
-    const activeVersion = await activeVersionPromise;
+    //const activeVersion = await activeVersionPromise;
 
     // If it's a major version change, don't skip waiting
-    if (!activeVersion || activeVersion.split('.')[0] === version.split('.')[0]) {
-      self.skipWaiting();
-    }
+    //if (!activeVersion || activeVersion.split('.')[0] === version.split('.')[0]) {
+    //  self.skipWaiting();
+    //}
   })());
 });
 
