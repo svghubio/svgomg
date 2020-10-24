@@ -25,4 +25,9 @@
   //.diff {
   //  margin-left: 0.5em;
   //}
+
+  &.active {
+    background-color: #2D2D2D;
+    color: #FFF;
+  }
 }

@@ -17,7 +17,7 @@ function humanSize(bytes) {
 export default class Results {
   constructor() {
     this.container = strToEl(
-      '<div class="results">' +
+      '<div class="results" id="results-thing">' +
         '<span class="size"></span> ' +
         '<span class="diff"></span>' +
       '</div>' +

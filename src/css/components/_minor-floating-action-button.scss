@@ -35,6 +35,10 @@
     height: 24px;
     fill: #000;
     z-index: 1;
+
+    &.active {
+      fill: #fff;
+    }
   }
 
   & .spinner {

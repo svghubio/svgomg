@@ -52,6 +52,10 @@
     & .minor-floating-action-button {
       margin-right: 10px;
       @include transform(translate(5px, 10px));
+
+      &.active {
+        background-color: #2D2D2D;
+      }
     }
   }
 
